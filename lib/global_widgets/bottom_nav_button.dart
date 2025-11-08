@@ -95,7 +95,7 @@ class _BottomNavbarButtonState extends State<BottomNavbarButton> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> title = ['myLibrary', 'bookStore', 'search'];
+    List<String> title = ['Home', 'Calendar', 'Explore', 'Messages', 'More'];
     return GestureDetector(
       onTap: widget.onTapp,
       child: Column(
