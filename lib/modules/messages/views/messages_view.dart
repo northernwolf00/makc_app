@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makc_app/modules/messages/views/messages_list_view.dart';
-import 'package:makc_app/modules/messages/widgets/empty_messages.dart';
+
 
 class MessagesScreen extends StatelessWidget {
   const MessagesScreen({Key? key}) : super(key: key);
@@ -8,7 +8,7 @@ class MessagesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Set hasConversations to true to see the list view
-    final hasConversations = false;
+    // final hasConversations = false;
 
     return Scaffold(
         appBar: AppBar(

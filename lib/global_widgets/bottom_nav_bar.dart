@@ -1,6 +1,10 @@
-
 import 'package:flutter/material.dart';
 import 'package:makc_app/global_widgets/bottom_nav_button.dart';
+import 'package:makc_app/modules/calendar/views/calendar_view.dart';
+import 'package:makc_app/modules/explore/views/explore_view.dart';
+import 'package:makc_app/modules/home/views/home_view.dart';
+import 'package:makc_app/modules/messages/views/messages_view.dart';
+import 'package:makc_app/modules/more/views/more_view.dart';
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -19,9 +23,11 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   }
 
   final List<Widget> page = [
-    // MyLibraryViewScreen(),
-    // StoreViewScreen(),
-    // SearchViewScreen()
+    HomeScreen(),
+    CalendarScreen(),
+    ExploreScreen(),
+    MessagesScreen(),
+    MoreScreen()
   ];
 
   @override
@@ -34,7 +40,6 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: Container(
         height: 70,
         child: Row(
@@ -66,6 +71,26 @@ class _BottomNavScreenState extends State<BottomNavScreen> {
                 selectedIndex: selectedIndex,
                 onTapp: () {
                   onTapp(2);
+                },
+              ),
+            ),
+            Expanded(
+              child: BottomNavbarButton(
+                icon: false,
+                index: 3,
+                selectedIndex: selectedIndex,
+                onTapp: () {
+                  onTapp(3);
+                },
+              ),
+            ),
+            Expanded(
+              child: BottomNavbarButton(
+                icon: false,
+                index: 4,
+                selectedIndex: selectedIndex,
+                onTapp: () {
+                  onTapp(4);
                 },
               ),
             ),
