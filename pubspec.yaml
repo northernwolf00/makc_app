@@ -18,11 +18,11 @@ dependencies:
   cupertino_icons: ^1.0.8
 
  #==================== FIREBASE ====================#
-  firebase_core: ^3.1.1
-  firebase_core_platform_interface: ^6.0.0
-  firebase_messaging: ^15.0.0
-  flutter_local_notifications: ^18.0.1
-  firebase_performance: ^0.10.1+10
+  # firebase_core: ^3.1.1
+  # firebase_core_platform_interface: ^6.0.0
+  # firebase_messaging: ^15.0.0
+  # flutter_local_notifications: ^18.0.1
+  # firebase_performance: ^0.10.1+10
   
 
   #==================== STATE MANAGEMENT ====================#
@@ -43,8 +43,9 @@ dependencies:
   flutter_html: ^3.0.0-beta.2
   flutter_svg: ^2.0.12
   video_player: ^2.10.0
-  
-  path_provider: ^2.1.5
+  carousel_slider: ^4.2.1 
+  table_calendar: ^3.0.9
+
   
   
  
