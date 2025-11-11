@@ -4,7 +4,8 @@ import 'package:makc_app/modules/explore/model/studio.dart';
 class ClassDetailScreen extends StatelessWidget {
   final ClassProgram classProgram;
 
-  const ClassDetailScreen({Key? key, required this.classProgram}) : super(key: key);
+  const ClassDetailScreen({Key? key, required this.classProgram})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +15,8 @@ class ClassDetailScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Image.network(
-                  'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=800',
+                Image.asset(
+                  'assets/images/im4.png',
                   width: double.infinity,
                   height: 300,
                   fit: BoxFit.cover,
@@ -39,8 +40,8 @@ class ClassDetailScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                                        const Text(
-                      'About this programm',
+                    const Text(
+                      'About this program',
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -65,7 +66,8 @@ class ClassDetailScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 12),
                     _buildBulletPoint('Basic boxing stance and footwork'),
-                    _buildBulletPoint('Fundamental punches (jab, cross, hook, uppercut)'),
+                    _buildBulletPoint(
+                        'Fundamental punches (jab, cross, hook, uppercut)'),
                     _buildBulletPoint('Proper breathing techniques'),
                     _buildBulletPoint('Basic defensive movements'),
                     _buildBulletPoint('Conditioning and fitness training'),
@@ -81,13 +83,13 @@ class ClassDetailScreen extends StatelessWidget {
                     _buildCoachCard(
                       'James Bond',
                       'Head Trainer & Owner',
-                      'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100',
+                      'assets/images/p1.png',
                     ),
                     const SizedBox(height: 12),
                     _buildCoachCard(
                       'Coach Ali',
-                      'Strength & conditioning specialist',
-                      'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100',
+                      'Strength & Conditioning Specialist',
+                      'assets/images/p2.png',
                     ),
                     const SizedBox(height: 24),
                   ],
@@ -155,7 +157,7 @@ class ClassDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCoachCard(String name, String title, String imageUrl) {
+  Widget _buildCoachCard(String name, String title, String assetPath) {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
@@ -166,8 +168,8 @@ class ClassDetailScreen extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(30),
-            child: Image.network(
-              imageUrl,
+            child: Image.asset(
+              assetPath,
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -200,4 +202,3 @@ class ClassDetailScreen extends StatelessWidget {
     );
   }
 }
-     

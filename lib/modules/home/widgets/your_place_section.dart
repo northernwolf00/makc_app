@@ -8,19 +8,19 @@ class YourPlacesSection extends StatelessWidget {
     final List<Map<String, String>> places = [
       {
         'name': 'Al\'s Boxing',
-        'image': 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400',
+        'image': 'assets/images/p1.png',
       },
       {
         'name': 'Culinary Creators',
-        'image': 'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400',
+        'image': 'assets/images/p2.png',
       },
       {
         'name': 'Yoga Studio',
-        'image': 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400',
+        'image': 'assets/images/p3.png',
       },
       {
         'name': 'Art Gallery',
-        'image': 'https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=400',
+        'image': 'assets/images/p4.png',
       },
     ];
 
@@ -34,14 +34,14 @@ class YourPlacesSection extends StatelessWidget {
             child: Text(
               'Your places',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
           const SizedBox(height: 16),
           SizedBox(
-            height: 120,
+            height: 155,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -52,12 +52,12 @@ class YourPlacesSection extends StatelessWidget {
                   child: Column(
                     children: [
                       Container(
-                        width: 80,
-                        height: 80,
+                        width: 100,
+                        height: 100,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(
-                            image: NetworkImage(places[index]['image']!),
+                            image: AssetImage(places[index]['image']!),
                             fit: BoxFit.cover,
                           ),
                           border: Border.all(
@@ -68,7 +68,7 @@ class YourPlacesSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 8),
                       SizedBox(
-                        width: 80,
+                        width: 100,
                         child: Text(
                           places[index]['name']!,
                           textAlign: TextAlign.center,

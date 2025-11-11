@@ -14,7 +14,7 @@ class BottomNavScreen extends StatefulWidget {
 }
 
 class _BottomNavScreenState extends State<BottomNavScreen> {
-  int selectedIndex = 1;
+  int selectedIndex = 0;
 
   bool isvisible = false;
   @override
