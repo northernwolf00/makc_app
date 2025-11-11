@@ -16,7 +16,7 @@ class ExploreScreen extends StatelessWidget {
         status: 'Open',
         rating: 4.8,
         distance: '2 km',
-        imageUrl: 'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400',
+        imageUrl: 'assets/images/p1.png',
         statusColor: Colors.green,
       ),
       Studio(
@@ -26,17 +26,17 @@ class ExploreScreen extends StatelessWidget {
         status: 'Closes soon',
         rating: 0,
         distance: '',
-        imageUrl: 'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400',
+        imageUrl: 'assets/images/p2.png',
         statusColor: Colors.orange,
       ),
       Studio(
-        name: 'Al\'s Boxing',
+        name: 'Pure Pilates',
         type: 'Pilates studio',
         location: 'Prairie, Kansas',
         status: 'Closed',
         rating: 0,
         distance: '4 km',
-        imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400',
+        imageUrl: 'assets/images/p3.png',
         statusColor: Colors.red,
       ),
     ];
@@ -57,7 +57,8 @@ class ExploreScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => StudioDetailScreen(studio: studios[index]),
+                          builder: (context) =>
+                              StudioDetailScreen(studio: studios[index]),
                         ),
                       );
                     },
@@ -77,15 +78,33 @@ class ExploreScreen extends StatelessWidget {
       child: TextField(
         decoration: InputDecoration(
           hintText: 'Search',
-          hintStyle: TextStyle(color: Colors.grey.shade400),
-          prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+          hintStyle: TextStyle(
+            color: Colors.grey.shade400,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
+          suffixIcon: Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: Icon(
+              Icons.search,
+              color: Colors.grey.shade400,
+              size: 32,
+            ),
+          ),
           filled: true,
           fillColor: Colors.grey.shade100,
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(12),
+            borderRadius: BorderRadius.circular(24),
             borderSide: BorderSide.none,
           ),
-          contentPadding: const EdgeInsets.symmetric(vertical: 12),
+          contentPadding: const EdgeInsets.symmetric(
+            vertical: 24,
+            horizontal: 24,
+          ),
+        ),
+        style: const TextStyle(
+          fontSize: 24,
+          fontWeight: FontWeight.w500,
         ),
       ),
     );

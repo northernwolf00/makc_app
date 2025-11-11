@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makc_app/global_widgets/custom_icon.dart';
 import 'package:makc_app/modules/explore/model/studio.dart';
 
 class StudioCard extends StatelessWidget {
@@ -21,7 +22,7 @@ class StudioCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
-              child: Image.network(
+              child: Image.asset(
                 studio.imageUrl,
                 width: 90,
                 height: 90,
@@ -57,16 +58,13 @@ class StudioCard extends StatelessWidget {
                           vertical: 4,
                         ),
                         decoration: BoxDecoration(
-                          color: studio.statusColor.withOpacity(0.1),
+                          // color: studio.statusColor.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(4),
                         ),
                         child: Row(
                           children: [
-                            Icon(
-                              Icons.circle,
-                              size: 8,
-                              color: studio.statusColor,
-                            ),
+                            CustomIcon(title: 'assets/icons/c1.svg', height: 8, width: 8, color: studio.statusColor),
+                            
                             const SizedBox(width: 4),
                             Text(
                               studio.status,

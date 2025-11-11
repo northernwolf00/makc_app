@@ -333,23 +333,19 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
         name: 'Beginner Boxing',
         description: 'Learn fundamentals and conditioning',
         coach: 'James Bond',
-        coachImage:
-            'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100',
+        coachImage: 'assets/images/p1.png',
         startTime: '10:00 AM',
         duration: '1 hour',
-        image:
-            'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400',
+        image: 'assets/images/im4.png',
       ),
       ClassProgram(
         name: 'Youth Program',
         description: 'Learn fundamentals and conditioning',
         coach: 'James Bond',
-        coachImage:
-            'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100',
-        startTime: '10:00 AM',
+        coachImage: 'assets/images/p2.png',
+        startTime: '12:00 PM',
         duration: '1 hour',
-        image:
-            'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400',
+        image: 'assets/images/im4.png',
       ),
     ];
 
@@ -359,18 +355,20 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
         children: [
           _buildWeekCalendar(),
           const SizedBox(height: 24),
-          ...classes.map((classProgram) => ClassCard(
-                classProgram: classProgram,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) =>
-                          ClassDetailScreen(classProgram: classProgram),
-                    ),
-                  );
-                },
-              )),
+          ...classes.map(
+            (classProgram) => ClassCard(
+              classProgram: classProgram,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ClassDetailScreen(classProgram: classProgram),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );

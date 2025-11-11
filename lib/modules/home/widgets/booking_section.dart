@@ -22,8 +22,8 @@ class _YourBookingsSectionState extends State<YourBookingsSection> {
             child: Text(
               'Your bookings',
               style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
               ),
             ),
           ),
@@ -39,17 +39,24 @@ class _YourBookingsSectionState extends State<YourBookingsSection> {
                 Expanded(
                   child: GestureDetector(
                     onTap: () => setState(() => selectedTab = 0),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(vertical: 12),
-                      decoration: BoxDecoration(
-                        color: selectedTab == 0 ? Colors.white : Colors.transparent,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Text(
-                        'Upcoming',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontWeight: selectedTab == 0 ? FontWeight.bold : FontWeight.normal,
+                    child: Padding(
+                      padding: const EdgeInsets.all(3.0),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        decoration: BoxDecoration(
+                          color: selectedTab == 0
+                              ? Colors.white
+                              : Colors.transparent,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Text(
+                          'Upcoming',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontWeight: selectedTab == 0
+                                ? FontWeight.bold
+                                : FontWeight.normal,
+                          ),
                         ),
                       ),
                     ),
@@ -61,14 +68,18 @@ class _YourBookingsSectionState extends State<YourBookingsSection> {
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 12),
                       decoration: BoxDecoration(
-                        color: selectedTab == 1 ? Colors.white : Colors.transparent,
+                        color: selectedTab == 1
+                            ? Colors.white
+                            : Colors.transparent,
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: Text(
                         'Past',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontWeight: selectedTab == 1 ? FontWeight.bold : FontWeight.normal,
+                          fontWeight: selectedTab == 1
+                              ? FontWeight.bold
+                              : FontWeight.normal,
                         ),
                       ),
                     ),

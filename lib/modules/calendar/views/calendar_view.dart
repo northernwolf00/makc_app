@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makc_app/global_widgets/custom_icon.dart';
 import 'package:makc_app/modules/calendar/widgets/calendar_widget.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -12,8 +13,8 @@ class CalendarScreen extends StatefulWidget {
 class _CalendarScreenState extends State<CalendarScreen> {
   int selectedViewTab = 0; // 0: Month, 1: Week, 2: Day
   int selectedUserTab = 0; // 0: All, 1: Alimurat, 2: Michael
-  DateTime focusedDay = DateTime(2025, 9, 2);
-  DateTime selectedDay = DateTime(2025, 9, 2);
+  DateTime focusedDay = DateTime.now();
+  DateTime selectedDay = DateTime.now();
 
   final List<String> userTabs = ['All', 'Alimurat', 'Michael'];
   final List<Color> userColors = [
@@ -27,104 +28,52 @@ class _CalendarScreenState extends State<CalendarScreen> {
     Colors.green,
   ];
 
-  // Sample events
+  // Sample events (now using asset images)
   final Map<DateTime, List<Map<String, dynamic>>> events = {
-    DateTime(2025, 9, 2): [
+    DateTime(2025, 11, 2): [
       {
         'title': 'Boxing Basics - Beginner',
         'time': '10:00 AM - 11:00 AM',
         'instructor': 'with James Garcia',
         'location': 'Al\'s Boxing',
-        'image':
-            'https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?w=400',
+        'image': 'assets/images/c1.png',
         'colors': [Colors.green, Colors.pink],
       },
       {
         'title': 'Yoga',
         'time': '12:00 AM - 13:00 AM',
         'instructor': 'with James Garcia',
-        'location': 'Yoga studio',
-        'image':
-            'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400',
+        'location': 'Yoga Studio',
+        'image': 'assets/images/c2.png',
         'colors': [Colors.pink],
       },
     ],
-    DateTime(2025, 9, 3): [
+    DateTime(2025, 11, 3): [
       {
         'title': 'Yoga',
         'colors': [Colors.pink],
+        'image': 'assets/images/c2.png',
       },
     ],
-    DateTime(2025, 9, 6): [
+    DateTime(2025, 11, 6): [
       {
         'title': 'Event',
         'colors': [Colors.green],
+        'image': 'assets/images/c2.png',
       },
     ],
-    DateTime(2025, 9, 8): [
+    DateTime(2025, 11, 8): [
       {
         'title': 'Event',
         'colors': [Colors.pink],
+        'image': 'assets/images/c1.png',
       },
     ],
-    DateTime(2025, 9, 10): [
+    DateTime(2025, 11, 10): [
       {
         'title': 'Multi Event',
         'colors': [Colors.green, Colors.pink, Colors.blue],
-      },
-    ],
-    DateTime(2025, 9, 13): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.blue, Colors.pink],
-      },
-    ],
-    DateTime(2025, 9, 15): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.pink, Colors.green],
-      },
-    ],
-    DateTime(2025, 9, 17): [
-      {
-        'title': 'Event',
-        'colors': [Colors.green],
-      },
-    ],
-    DateTime(2025, 9, 20): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.blue, Colors.pink],
-      },
-    ],
-    DateTime(2025, 9, 22): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.green, Colors.pink, Colors.blue],
-      },
-    ],
-    DateTime(2025, 9, 23): [
-      {
-        'title': 'Event',
-        'colors': [Colors.pink],
-      },
-    ],
-    DateTime(2025, 9, 29): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.green, Colors.pink, Colors.blue],
-      },
-    ],
-    DateTime(2025, 9, 31): [
-      {
-        'title': 'Multi Event',
-        'colors': [Colors.green, Colors.pink, Colors.blue],
-      },
-    ],
-    DateTime(2025, 9, 21): [
-      {
-        'title': 'Event',
-        'colors': [Colors.green],
+        'image': 'assets/images/c1.png',
       },
     ],
   };
@@ -170,10 +119,29 @@ class _CalendarScreenState extends State<CalendarScreen> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          IconButton(
-            icon: const Icon(Icons.calendar_today_outlined, size: 28),
-            onPressed: () => _showAddEventBottomSheet(),
-          ),
+          GestureDetector(
+              onTap: () {
+                showAddEventBottomSheet(
+                  context,
+                  selectedUserTab: selectedUserTab,
+                  userTabs: ['All', 'Alimurat', 'Michael'],
+                  userColors: [
+                    Colors.blue.shade50,
+                    Colors.pink.shade50,
+                    Colors.green.shade50,
+                  ],
+                  userTextColors: [
+                    Colors.blue,
+                    Colors.pink,
+                    Colors.green,
+                  ],
+                );
+              },
+              child: CustomIcon(
+                  title: 'assets/icons/c2.svg',
+                  height: 28,
+                  width: 28,
+                  color: Colors.black)),
         ],
       ),
     );
@@ -515,8 +483,8 @@ class _CalendarScreenState extends State<CalendarScreen> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Image.network(
-              event['image'] ?? '',
+            child: Image.asset(
+              event['image'] ?? 'assets/images/c1.png',
               width: 80,
               height: 80,
               fit: BoxFit.cover,
@@ -574,17 +542,26 @@ class _CalendarScreenState extends State<CalendarScreen> {
     );
   }
 
-  void _showAddEventBottomSheet() {
+  void showAddEventBottomSheet(
+    BuildContext context, {
+    required int selectedUserTab,
+    required List<String> userTabs,
+    required List<Color> userColors,
+    required List<Color> userTextColors,
+  }) {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (context) => AddEventBottomSheet(
-        selectedUserTab: selectedUserTab,
-        userTabs: userTabs,
-        userColors: userColors,
-        userTextColors: userTextColors,
-      ),
+      barrierColor: Colors.black.withOpacity(0.5),
+      builder: (context) {
+        return AddEventBottomSheet(
+          selectedUserTab: selectedUserTab,
+          userTabs: userTabs,
+          userColors: userColors,
+          userTextColors: userTextColors,
+        );
+      },
     );
   }
 

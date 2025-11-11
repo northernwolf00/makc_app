@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makc_app/global_widgets/custom_icon.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({Key? key}) : super(key: key);
@@ -23,10 +24,11 @@ class HeaderSection extends StatelessWidget {
               ),
             ],
           ),
-          IconButton(
-            icon: const Icon(Icons.notifications_outlined, size: 28),
-            onPressed: () {},
-          ),
+          CustomIcon(
+              title: 'assets/icons/i1.svg',
+              height: 28,
+              width: 28,
+              color: Colors.black)
         ],
       ),
     );

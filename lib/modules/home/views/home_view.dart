@@ -17,9 +17,20 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const HeaderSection(),
-              const HeroCarouselSection(),
-              const YourPlacesSection(),
-              const YourBookingsSection(),
+              const CarouselSection(),
+              ListView.builder(
+                itemCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                    children: const [
+                      YourPlacesSection(),
+                      YourBookingsSection(),
+                    ],
+                  );
+                },
+              ),
               const PromoSection(),
             ],
           ),
