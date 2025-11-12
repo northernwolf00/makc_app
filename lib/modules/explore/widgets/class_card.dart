@@ -29,7 +29,7 @@ class ClassCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8),
-                  child: Image.network(
+                  child: Image.asset(
                     classProgram.image,
                     width: 60,
                     height: 60,
@@ -64,14 +64,15 @@ class ClassCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Coach:', style: TextStyle(fontWeight: FontWeight.w500)),
+                const Text('Coach:',
+                    style: TextStyle(fontWeight: FontWeight.w500)),
                 Row(
                   children: [
                     Text(classProgram.coach),
                     const SizedBox(width: 8),
                     ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Image.network(
+                      child: Image.asset(
                         classProgram.coachImage,
                         width: 32,
                         height: 32,
@@ -86,7 +87,8 @@ class ClassCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Start time:', style: TextStyle(fontWeight: FontWeight.w500)),
+                const Text('Start time:',
+                    style: TextStyle(fontWeight: FontWeight.w500)),
                 Text(classProgram.startTime),
               ],
             ),
@@ -94,7 +96,8 @@ class ClassCard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('Duration:', style: TextStyle(fontWeight: FontWeight.w500)),
+                const Text('Duration:',
+                    style: TextStyle(fontWeight: FontWeight.w500)),
                 Text(classProgram.duration),
               ],
             ),

@@ -4,7 +4,8 @@ import 'package:makc_app/modules/explore/model/studio.dart';
 class StudioInfoBottomSheet extends StatelessWidget {
   final Studio studio;
 
-  const StudioInfoBottomSheet({Key? key, required this.studio}) : super(key: key);
+  const StudioInfoBottomSheet({Key? key, required this.studio})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class StudioInfoBottomSheet extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(40),
-                  child: Image.network(
+                  child: Image.asset(
                     studio.imageUrl,
                     width: 60,
                     height: 60,

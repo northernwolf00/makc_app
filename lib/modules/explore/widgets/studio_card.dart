@@ -63,8 +63,11 @@ class StudioCard extends StatelessWidget {
                         ),
                         child: Row(
                           children: [
-                            CustomIcon(title: 'assets/icons/c1.svg', height: 8, width: 8, color: studio.statusColor),
-                            
+                            CustomIcon(
+                                title: 'assets/icons/c1.svg',
+                                height: 14,
+                                width: 14,
+                                color: studio.statusColor),
                             const SizedBox(width: 4),
                             Text(
                               studio.status,

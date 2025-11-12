@@ -23,7 +23,7 @@ class ConversationCard extends StatelessWidget {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(35),
-                  child: Image.network(
+                  child: Image.asset(
                     conversation.imageUrl,
                     width: 60,
                     height: 60,
