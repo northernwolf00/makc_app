@@ -11,7 +11,7 @@ class CustomIcon extends StatelessWidget {
       {required this.title,
       required this.height,
       required this.width,
-      required this.color,
+      this.color = Colors.transparent,
       super.key});
 
   bool mode = false;

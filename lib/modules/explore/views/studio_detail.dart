@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:makc_app/global_widgets/custom_icon.dart';
 import 'package:makc_app/modules/explore/model/studio.dart';
 import 'package:makc_app/modules/explore/views/class_detail_view.dart';
 import 'package:makc_app/modules/explore/widgets/class_card.dart';
@@ -46,12 +48,23 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () => Navigator.pop(context),
+          CircleAvatar(
+            backgroundColor: Colors.grey.shade50,
+            child: GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Center(
+                    child: Padding(
+                  padding: const EdgeInsets.only(left: 6),
+                  child:
+                      Icon(Icons.arrow_back_ios, color: Colors.black, size: 18),
+                ))),
           ),
           IconButton(
-            icon: const Icon(Icons.info_outline),
+            icon: const Icon(
+              Icons.info_outline,
+              color: Colors.black,
+              size: 28,
+            ),
             onPressed: () => _showInfoBottomSheet(context),
           ),
         ],
@@ -66,7 +79,7 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(50),
-            child: Image.network(
+            child: Image.asset(
               widget.studio.imageUrl,
               width: 80,
               height: 80,
@@ -96,8 +109,11 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Icon(Icons.circle,
-                        size: 8, color: widget.studio.statusColor),
+                    CustomIcon(
+                        title: 'assets/icons/c1.svg',
+                        height: 14,
+                        width: 14,
+                        color: widget.studio.statusColor),
                     const SizedBox(width: 4),
                     Text(
                       widget.studio.status,
@@ -146,7 +162,11 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
           Expanded(
             child: OutlinedButton.icon(
               onPressed: () {},
-              icon: const Icon(Icons.message_outlined),
+              icon: CustomIcon(
+                  title: 'assets/icons/i2.svg',
+                  height: 24,
+                  width: 24,
+                  color: Colors.black),
               label: const Text('Message'),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.black,
@@ -162,7 +182,11 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
           Expanded(
             child: OutlinedButton.icon(
               onPressed: () {},
-              icon: const Icon(Icons.share_outlined),
+              icon: CustomIcon(
+                  title: 'assets/icons/i3.svg',
+                  height: 24,
+                  width: 24,
+                  color: Colors.black),
               label: const Text('Refer & Earn'),
               style: OutlinedButton.styleFrom(
                 foregroundColor: Colors.black,
@@ -225,9 +249,8 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
         children: [
           _buildBookingTabs(),
           const SizedBox(height: 24),
-          Icon(Icons.calendar_today_outlined,
-              size: 48, color: Colors.grey.shade300),
-          const SizedBox(height: 16),
+          SvgPicture.asset('assets/icons/i4.svg', height: 48),
+          const SizedBox(height: 24),
           const Text(
             'No booking yet',
             style: TextStyle(
@@ -246,7 +269,9 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
           ),
           const SizedBox(height: 24),
           ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              _showInfoBottomSheet(context);
+            },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 14),
@@ -274,55 +299,58 @@ class _StudioDetailScreenState extends State<StudioDetailScreen> {
         color: Colors.grey.shade100,
         borderRadius: BorderRadius.circular(10),
       ),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () => setState(() => selectedBookingTab = 0),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                decoration: BoxDecoration(
-                  color: selectedBookingTab == 0
-                      ? Colors.white
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  'Upcoming',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: selectedBookingTab == 0
-                        ? FontWeight.bold
-                        : FontWeight.normal,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: GestureDetector(
+                onTap: () => setState(() => selectedBookingTab = 0),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: BoxDecoration(
+                    color: selectedBookingTab == 0
+                        ? Colors.white
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Upcoming',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: selectedBookingTab == 0
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: GestureDetector(
-              onTap: () => setState(() => selectedBookingTab = 1),
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 12),
-                decoration: BoxDecoration(
-                  color: selectedBookingTab == 1
-                      ? Colors.white
-                      : Colors.transparent,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: Text(
-                  'Past',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontWeight: selectedBookingTab == 1
-                        ? FontWeight.bold
-                        : FontWeight.normal,
+            Expanded(
+              child: GestureDetector(
+                onTap: () => setState(() => selectedBookingTab = 1),
+                child: Container(
+                  padding: const EdgeInsets.symmetric(vertical: 12),
+                  decoration: BoxDecoration(
+                    color: selectedBookingTab == 1
+                        ? Colors.white
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    'Past',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: selectedBookingTab == 1
+                          ? FontWeight.bold
+                          : FontWeight.normal,
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

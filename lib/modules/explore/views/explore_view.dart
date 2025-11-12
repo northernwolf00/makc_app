@@ -80,7 +80,7 @@ class ExploreScreen extends StatelessWidget {
           hintText: 'Search',
           hintStyle: TextStyle(
             color: Colors.grey.shade400,
-            fontSize: 24,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
           suffixIcon: Padding(
@@ -98,7 +98,7 @@ class ExploreScreen extends StatelessWidget {
             borderSide: BorderSide.none,
           ),
           contentPadding: const EdgeInsets.symmetric(
-            vertical: 24,
+            vertical: 10,
             horizontal: 24,
           ),
         ),
