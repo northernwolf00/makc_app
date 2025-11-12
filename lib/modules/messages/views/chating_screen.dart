@@ -35,9 +35,23 @@ class _ChatScreenState extends State<ChatScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 1,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.pop(context),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(12),
+          child: Container(
+            margin: const EdgeInsets.all(8),
+            decoration: BoxDecoration(
+              color: Colors.grey.withOpacity(0.25), // Semi-transparent white
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(left: 4),
+              child: IconButton(
+                icon: const Icon(Icons.arrow_back_ios,
+                    color: Colors.white, size: 18),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ),
+          ),
         ),
         title: Row(
           children: [
@@ -45,7 +59,7 @@ class _ChatScreenState extends State<ChatScreen> {
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
-                  child: Image.network(
+                  child: Image.asset(
                     widget.conversation.imageUrl,
                     width: 40,
                     height: 40,
@@ -154,7 +168,8 @@ class _ChatScreenState extends State<ChatScreen> {
       child: Row(
         children: [
           IconButton(
-            icon: Icon(Icons.emoji_emotions_outlined, color: Colors.grey.shade600),
+            icon: Icon(Icons.emoji_emotions_outlined,
+                color: Colors.grey.shade600),
             onPressed: () {},
           ),
           Expanded(
